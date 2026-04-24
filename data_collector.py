@@ -1,8 +1,9 @@
+import os
 import requests
 from db_config import collection
+from datetime import datetime 
 
-# 👉 yaha apni VirusTotal API key daal
-API_KEY = "4c316d53972b08d83da5d8fe2a96d4b29ce65599893177548e7b29ab41be977f"
+API_KEY = os.getenv("VT_API_KEY")
 
 # 👉 test IP list (baad me tu change kar sakta hai)
 ip_targets = ["8.8.4.4", "9.9.9.9"]
@@ -38,10 +39,13 @@ if response.status_code == 200:
     # Duplicate check
     if collection.find_one({"ip": ip}) is None:
         data = {
-            "ip": ip,
-            "malicious": malicious,
-            "risk": risk
-        }
+    "ip": ip,
+    "source": "VirusTotal",
+    "risk": risk_level,
+    "malicious": malicious,
+    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+}
+
         collection.insert_one(data)
         print(f"[+] Inserted: {ip} | Risk: {risk}")
     else:
