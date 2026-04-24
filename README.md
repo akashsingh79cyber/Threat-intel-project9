@@ -27,6 +27,15 @@ A simple dashboard is used to display and sort the data based on risk leve
 - Shows IP risk levels
 - Sorted report based on risk
 
+## Threat Intelligence Dashboard Output
+
+<p align="center">
+  <img src="Screenshot_2026-04-24_17_44_37.png" width="600"/>
+</p>
 
 
-Updated Today
+## Threat Intelligence Collection Output
+
+<p align="center">
+  <img src="Screenshot_2026-04-24_17_36_13.png" width="600"/>
+</p>
